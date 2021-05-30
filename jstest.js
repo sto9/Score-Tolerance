@@ -1,3 +1,5 @@
-export const main = function() {
-  alert("test");
-}
+javascript: (
+  function () {
+    alert("test");
+  }
+)
