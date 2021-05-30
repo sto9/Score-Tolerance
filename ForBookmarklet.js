@@ -1,47 +1,55 @@
 javascript: (function () {
   'use strict';
 
-  function GetChain(ID, src) {
-    const chain_check_text = 'CH' + ID;
-    var chain = '';
-    $.ajax({
-      type: 'GET',
-      url: src,
-      dataType: "text",
-      async: false,
-    })
-      .done(function (textall) {
-        textall = textall.split('\n');
-        for (const textdata of textall) {
-          const check_text = textdata.slice(4, 12);
-          if (check_text == chain_check_text) {
-            let j = textdata.indexOf("CHAIN", 15) + 5;
-            while (!(textdata[j - 1] == '>' && $.isNumeric(textdata[j])) && j < textdata.length) {
-              j++;
-            }
-            while (textdata[j] != '<' && j < textdata.length) {
-              chain += textdata[j];
-              j++;
-            }
-            break;
-          }
-        }
-      });
-    return chain;
-  }
+  var head = document.getElementsByTagName('head');
+  var script = document.createElement('script');
+  script.setAttribute('src', 'https://code.jquery.com/jquery-1.12.4.min.js');
+  script.setAttribute('type', 'text/javascript');
+  script.addEventListener('load', function () {
 
-  function CalcTolerance(chain, gametype) {
-    if (gametype == 0) { // SDVX
-      return Math.floor(chain / 50);
-    } else if (gametype == 1) { // CHUNITHM
-      let res = [];
-      let t = Math.floor((2500 * chain) / 510000 * 10) / 10; // ATTACK
-      res.push(t.toFixed(1));
-      t = Math.floor(chain / 100);
-      res.push(t);
-      return res;
+    function GetChain(ID, src) {
+      const chain_check_text = 'CH' + ID;
+      var chain = '';
+
+      $.ajax({
+        type: 'GET',
+        url: src,
+        dataType: "text",
+        async: false,
+      })
+        .done(function (textall) {
+          textall = textall.split('\n');
+          for (const textdata of textall) {
+            const check_text = textdata.slice(4, 12);
+            if (check_text == chain_check_text) {
+              let j = textdata.indexOf("CHAIN", 15) + 5;
+              while (!(textdata[j - 1] == '>' && $.isNumeric(textdata[j])) && j < textdata.length) {
+                j++;
+              }
+              while (textdata[j] != '<' && j < textdata.length) {
+                chain += textdata[j];
+                j++;
+              }
+              break;
+            }
+          }
+        });
+      return chain;
     }
-  }
+
+
+    function CalcTolerance(chain, gametype) {
+      if (gametype == 0) {
+        return Math.floor(chain / 50);
+      } else if (gametype == 1) {
+        let res = [];
+        let t = Math.floor((2500 * chain) / 510000 * 10) / 10;
+        res.push(t.toFixed(1));
+        t = Math.floor(chain / 100);
+        res.push(t);
+        return res;
+      }
+    }
 
     const url = location.href;
     let gametype;
@@ -83,4 +91,7 @@ javascript: (function () {
       }
     }
     document.getElementsByTagName('head')[0].setAttribute('id', 'extended');
+    alert("t");
+  });
+  document.head.appendChild(script);
 })();
