@@ -1,3 +1,3 @@
-function main() {
+module.exports = function main() {
   alert("test");
 }
