@@ -91,7 +91,6 @@ javascript: (function () {
       }
     }
     document.getElementsByTagName('head')[0].setAttribute('id', 'extended');
-    alert("t");
   });
   document.head.appendChild(script);
 })();
