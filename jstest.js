@@ -1,5 +1,1 @@
-javascript: (
-  function () {
-    alert("test");
-  }
-)
+javascript:alert("test")
