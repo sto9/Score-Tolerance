@@ -1,3 +1,3 @@
-module.exports = function main() {
+export const main = function() {
   alert("test");
 }
