@@ -37,13 +37,14 @@ javascript: (function () {
       return chain;
     }
 
-
     function CalcTolerance(chain, gametype) {
-      if (gametype == 0) {
+      if (gametype == 0) { // SDVX
         return Math.floor(chain / 50);
-      } else if (gametype == 1) {
+      } else if (gametype == 1) { // CHUNITHM
         let res = [];
-        let t = Math.floor((2500 * chain) / 510000 * 10) / 10;
+        let t = Math.floor((2500 * chain) / 510000 * 10) / 10; // ATTACK
+        res.push(t.toFixed(1));
+        t = Math.floor((1000 * chain) / 510000 * 10) / 10; // ATTACK
         res.push(t.toFixed(1));
         t = Math.floor(chain / 100);
         res.push(t);
@@ -59,6 +60,8 @@ javascript: (function () {
     if (document.getElementById('extended') !== null) return;
     const html_idx = [[1, 7], [4, 2]];
     const start_index = [2, 2];
+    const html_idx = [[1, 9], [4, 2]];
+    const start_index = [2, 2];
     const html0 = document.getElementsByTagName('center')[0].getElementsByClassName('c')[html_idx[0][gametype]].getElementsByClassName('tbg')[0];
     if (gametype == 0) {
       html0.getElementsByTagName('tbody')[0].insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f3">※最新でない恐れあり</div></td></tr>');
@@ -66,8 +69,9 @@ javascript: (function () {
     } else {
       html0.getElementsByTagName('tbody')[0].insertAdjacentHTML(
         'afterbegin',
-        '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS許容アタ数<br>(JUSTICE0の場合)</div></td>'
-        + '<td style = "text-align:right;"><div class="f2">99AJ<br>許容(J)</div></td>'
+        '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
+        + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
+        + '<td style = "text-align:right;"><div class="f2">99AJ<br>(J)</div></td>'
       );
     }
     const html = html0.getElementsByTagName('tr');
