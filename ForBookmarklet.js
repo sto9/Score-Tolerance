@@ -54,7 +54,7 @@ javascript: (function () {
 
     const url = location.href;
     let gametype;
-    const regex = new RegExp('https://www.sdvx.in/sort/*');
+    const regex = new RegExp('https://sdvx.in/sort/*');
     if (regex.test(url)) gametype = 0;
     else gametype = 1;
     if (document.getElementById('extended') !== null) return;
@@ -89,6 +89,7 @@ javascript: (function () {
           'afterend',
           '<td style="text-align:right;"><div class="f2">' + result[0] + '</div></td>'
           + '<td style="text-align:right;"><div class="f2">' + result[1] + '</div></td>'
+          + '<td style="text-align:right;"><div class="f2">' + result[2] + '</div></td>'
         );
       }
     }
