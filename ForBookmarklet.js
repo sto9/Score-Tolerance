@@ -54,7 +54,7 @@ javascript: (function () {
 
     const url = location.href;
     let gametype;
-    const regex = new RegExp('https://sdvx.in/sort/*');
+    const regex = new RegExp('https://www.sdvx.in/sort/*');
     if (regex.test(url)) gametype = 0;
     else gametype = 1;
     if (document.getElementById('extended') !== null) return;
