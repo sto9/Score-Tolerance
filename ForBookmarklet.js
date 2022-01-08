@@ -58,8 +58,6 @@ javascript: (function () {
     if (regex.test(url)) gametype = 0;
     else gametype = 1;
     if (document.getElementById('extended') !== null) return;
-    const html_idx = [[1, 7], [4, 2]];
-    const start_index = [2, 2];
     const html_idx = [[1, 9], [4, 2]];
     const start_index = [2, 2];
     const html0 = document.getElementsByTagName('center')[0].getElementsByClassName('c')[html_idx[0][gametype]].getElementsByClassName('tbg')[0];
