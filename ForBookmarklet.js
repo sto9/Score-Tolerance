@@ -86,9 +86,12 @@ javascript: (function () {
         const result = CalcTolerance(chain, gametype);
         td[html_idx[1][gametype]].insertAdjacentHTML(
           'afterend',
-          '<td style="text-align:right;"><div class="f2">' + result[0] + '</div></td>'
-          + '<td style="text-align:right;"><div class="f2">' + result[1] + '</div></td>'
-          + '<td style="text-align:right;"><div class="f2">' + result[2] + '</div></td>'
+          //'<td style="text-align:right;"><div class="f2">' + result[0] + '</div></td>'
+          //+ '<td style="text-align:right;"><div class="f2">' + result[1] + '</div></td>'
+          //+ '<td style="text-align:right;"><div class="f2">' + result[2] + '</div></td>'
+          '<td style="text-align:right;"><div class="f2">' + 0 + '</div></td>'
+          + '<td style="text-align:right;"><div class="f2">' + 1 + '</div></td>'
+          + '<td style="text-align:right;"><div class="f2">' + 2 + '</div></td>'
         );
       }
     }
