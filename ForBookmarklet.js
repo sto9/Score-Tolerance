@@ -9,7 +9,6 @@ javascript: (function () {
     function GetChain(ID, src) {
       const chain_check_text = 'CH' + ID;
       var chain = '';
-
       $.ajax({
         type: 'GET',
         url: src,
