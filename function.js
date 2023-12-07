@@ -47,7 +47,7 @@ function UpdateRowHead(tbodyElement, gametype) {
   if (gametype == 0) {
     tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f3">※最新でない恐れあり</div></td></tr>');
     tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f1">S許容ニア数</div></td></tr>');
-  } else {
+  } else if (gametype == 1) {
     tbodyElement.insertAdjacentHTML(
       'afterbegin',
       '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
@@ -57,8 +57,28 @@ function UpdateRowHead(tbodyElement, gametype) {
   }
 }
 
-function UpdateRow(scriptElement, gametype) {
-  console.log(scriptElement);
+// scriptElement...SORT~();が格納されているscript要素
+function UpdateRow(sortElement, gametype) {
+  const scriptElement = sortElement.parentElement.firstChild;
+  const src = scriptElement.getAttribute('src');
+  const ID = sortElement.innerHTML.slice(4, 4 + 6);
+  console.log(src);
+  console.log(ID);
+  const chain = parseInt(GetChain(ID, src));
+  const trElement = sortElement.parentElement.parentElement;
+
+  if (isNaN(chain)) return;
+  if (gametype == 0) {
+    trElement.insertAdjacentHTML('afterend', '<td style="text-align:right;"><div class="f1">' + CalcTolerance(chain, gametype) + '</div></td>');
+  } else {
+    const result = CalcTolerance(chain, gametype);
+    trElement.insertAdjacentHTML(
+      'afterend',
+      '<td style="text-align:right;"><div class="f2">' + result[0] + '</div></td>'
+      + '<td style="text-align:right;"><div class="f2">' + result[1] + '</div></td>'
+      + '<td style="text-align:right;"><div class="f2">' + result[2] + '</div></td>'
+    );
+  }
 }
 
 function UpdateTable() {
