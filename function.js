@@ -57,9 +57,9 @@ function UpdateRowHead(tbodyElement, gametype) {
   }
 }
 
-// scriptElement...SORT~();が格納されているscript要素
 function UpdateRow(sortElement, gametype) {
   const scriptElement = sortElement.parentElement.firstChild;
+  console.log(scriptElement);
   const src = scriptElement.getAttribute('src');
   const ID = sortElement.innerHTML.slice(4, 4 + 6);
   console.log(src);
