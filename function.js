@@ -45,10 +45,10 @@ function CalcTolerance(chain, gametype) {
 function UpdateRowHead(tbodyElement, gametype) {
   console.log(tbodyElement);
   if (gametype == 0) {
-    tbodyElement[0].insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f3">※最新でない恐れあり</div></td></tr>');
-    tbodyElement[0].insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f1">S許容ニア数</div></td></tr>');
+    tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f3">※最新でない恐れあり</div></td></tr>');
+    tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f1">S許容ニア数</div></td></tr>');
   } else {
-    tbodyElement[0].insertAdjacentHTML(
+    tbodyElement.insertAdjacentHTML(
       'afterbegin',
       '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
       + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
