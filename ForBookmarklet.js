@@ -5,7 +5,9 @@
   script.setAttribute('src', 'https://sto9.github.io/Score-Tolerance/function.js');
   script.setAttribute('type', 'text/javascript');
   script.addEventListener('load', function () {
-    console.log("a")
+    $(function() {
+      console.log('test')
+    })
     UpdateTable();
   });
   document.head.appendChild(script);
