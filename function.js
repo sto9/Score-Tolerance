@@ -46,7 +46,7 @@ function UpdateRow(scriptElement, gametype) {
   console.log(scriptElement);
 }
 
-function UpdateTable() {
+export function UpdateTable() {
   const url = location.href;
   let gametype = 0;
   const regex_chuni = new RegExp('https://sdvx.in/chunithm*');
