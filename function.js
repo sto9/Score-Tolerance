@@ -43,6 +43,7 @@ function CalcTolerance(chain, gametype) {
 }
 
 function UpdateRow(scriptElement, gametype) {
+  console.log("b");
   console.log(scriptElement);
 }
 
