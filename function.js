@@ -91,7 +91,6 @@ function UpdateTable() {
   else if (regex_ongeki.test(url)) gametype = 2;
   else if (regex_prsk.test(url)) gametype = 3;
   else if (regex_ymst.test(url)) gametype = 4;
-  console.log(gametype);
 
   if (document.getElementById('extended') !== null) return;
 
@@ -101,10 +100,11 @@ function UpdateTable() {
   let headAdded = false;
   for (let scriptElement of scriptElements) {
     if (regex_SORT.test(scriptElement.innerText)) {
-      UpdateRow(scriptElement);
+      UpdateRow(scriptElement, gametype);
       if (!headAdded) {
         UpdateRowHead(
-          scriptElement.parentElement.parentElement.parentElement);
+          scriptElement.parentElement.parentElement.parentElement,
+          gametype);
         headAdded = true;
       }
     }
