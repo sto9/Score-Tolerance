@@ -61,6 +61,7 @@ export function UpdateTable() {
   if (document.getElementById('extended') !== null) return;
 
   const scriptElements = document.documentElement.getElementsByTagName('script');
+  console.log(scriptElements)
   for (let scriptElement of scriptElements) {
     if (scriptElement.innerText.startsWith("SORT")) {
       UpdateRow(scriptElement);
