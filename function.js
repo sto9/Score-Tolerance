@@ -62,7 +62,7 @@ function UpdateTable() {
 
   const scriptElements = document.documentElement.getElementsByTagName('script');
   console.log(scriptElements)
-  const regex_SORT = new RegExp('SORT\d*');
+  const regex_SORT = new RegExp('^SORT\d');
   for (let scriptElement of scriptElements) {
     if (regex_SORT.test(scriptElement.innerText)) {
       UpdateRow(scriptElement);
