@@ -67,7 +67,7 @@ function UpdateRow(sortElement, gametype) {
 
   if (isNaN(chain)) return;
   if (gametype === 0) {
-    trElement.insertAdjacentHTML('afterend', '<td style="text-align:right;"><div class="f1">' + CalcTolerance(chain, gametype) + '</div></td>');
+    trElement.insertAdjacentHTML('beforeend', '<td style="text-align:right;"><div class="f1">' + CalcTolerance(chain, gametype) + '</div></td>');
   } else if (gametype === 1) {
     const result = CalcTolerance(chain, gametype);
     console.log(result);
