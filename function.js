@@ -58,7 +58,8 @@ function UpdateRowHead(tbodyElement, gametype) {
 }
 
 function UpdateRow(sortElement, gametype) {
-  const scriptElement = sortElement.parentElement.firstChild;
+  console.log(sortElement);
+  const scriptElement = sortElement.previousSibling;
   console.log(scriptElement);
   const src = scriptElement.getAttribute('src');
   const ID = sortElement.innerHTML.slice(4, 4 + 6);
