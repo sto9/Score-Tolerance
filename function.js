@@ -63,7 +63,7 @@ function UpdateRow(sortElement, gametype) {
   const ID = sortElement.innerHTML.slice(4, 4 + 6);
   const chain = parseInt(GetChain(ID, src));
   console.log(chain);
-  const trElement = sortElement.parentElement;
+  const trElement = sortElement.parentElement.parentElement;
 
   if (isNaN(chain)) return;
   if (gametype === 0) {
@@ -72,7 +72,7 @@ function UpdateRow(sortElement, gametype) {
     const result = CalcTolerance(chain, gametype);
     console.log(result);
     trElement.insertAdjacentHTML(
-      'afterend',
+      'beforeend',
       '<td style="text-align:right;"><div class="f2">' + result[0] + '</div></td>'
       + '<td style="text-align:right;"><div class="f2">' + result[1] + '</div></td>'
       + '<td style="text-align:right;"><div class="f2">' + result[2] + '</div></td>'
