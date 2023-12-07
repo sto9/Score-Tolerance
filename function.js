@@ -43,7 +43,6 @@ function CalcTolerance(chain, gametype) {
 }
 
 function UpdateRow(scriptElement, gametype) {
-  console.log("b");
   console.log(scriptElement);
 }
 
@@ -63,10 +62,8 @@ function UpdateTable() {
 
   const scriptElements = document.documentElement.getElementsByTagName('script');
   console.log(scriptElements)
-  const regex_SORT = new RegExp('^SORT\d');
+  const regex_SORT = new RegExp('^SORT[0-9]');
   for (let scriptElement of scriptElements) {
-    console.log("a");
-    console.log(scriptElement.innerText);
     if (regex_SORT.test(scriptElement.innerText)) {
       UpdateRow(scriptElement);
     }
