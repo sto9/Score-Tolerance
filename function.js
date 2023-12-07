@@ -62,6 +62,7 @@ function UpdateRow(sortElement, gametype) {
   const src = scriptElement.getAttribute('src');
   const ID = sortElement.innerHTML.slice(4, 4 + 6);
   const chain = parseInt(GetChain(ID, src));
+  console.log(chain);
   const trElement = sortElement.parentElement.parentElement;
 
   if (isNaN(chain)) return;
