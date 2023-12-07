@@ -42,6 +42,21 @@ function CalcTolerance(chain, gametype) {
   }
 }
 
+function UpdateRowHead(tbodyElement, gametype) {
+  console.log(tbodyElement);
+  if (gametype == 0) {
+    tbodyElement[0].insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f3">※最新でない恐れあり</div></td></tr>');
+    tbodyElement[0].insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f1">S許容ニア数</div></td></tr>');
+  } else {
+    tbodyElement[0].insertAdjacentHTML(
+      'afterbegin',
+      '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
+      + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
+      + '<td style = "text-align:right;"><div class="f2">99AJ<br>(J)</div></td>'
+    );
+  }
+}
+
 function UpdateRow(scriptElement, gametype) {
   console.log(scriptElement);
 }
@@ -63,9 +78,15 @@ function UpdateTable() {
   const scriptElements = document.documentElement.getElementsByTagName('script');
   console.log(scriptElements)
   const regex_SORT = new RegExp('^SORT[0-9]');
+  let headAdded = false;
   for (let scriptElement of scriptElements) {
     if (regex_SORT.test(scriptElement.innerText)) {
       UpdateRow(scriptElement);
+      if (!headAdded) {
+        UpdateRowHead(
+          scriptElement.parentElement.parentElement.parentElement);
+        headAdded = true;
+      }
     }
   }
 
