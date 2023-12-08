@@ -43,7 +43,6 @@ function CalcTolerance(chain, gametype) {
 }
 
 function UpdateRowHead(tbodyElement, gametype) {
-  console.log(tbodyElement);
   if (gametype === 0) {
     tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td style="text-align:right;"><div class="f3">※最新でない恐れあり</div></td></tr>');
     tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td style="text-align:right;"><div class="f1">S許容ニア数</div></td></tr>');
@@ -62,7 +61,6 @@ function UpdateRow(sortElement, gametype) {
   const src = scriptElement.getAttribute('src');
   const ID = sortElement.innerHTML.slice(4, 4 + 6);
   const chain = parseInt(GetChain(ID, src));
-  console.log(chain);
   const trElement = sortElement.parentElement.parentElement;
 
   if (isNaN(chain)) return;
@@ -70,7 +68,6 @@ function UpdateRow(sortElement, gametype) {
     trElement.insertAdjacentHTML('beforeend', '<td style="text-align:right;"><div class="f1">' + CalcTolerance(chain, gametype) + '</div></td>');
   } else if (gametype === 1) {
     const result = CalcTolerance(chain, gametype);
-    console.log(result);
     trElement.insertAdjacentHTML(
       'beforeend',
       '<td style="text-align:right;"><div class="f2">' + result[0] + '</div></td>'
@@ -95,7 +92,6 @@ function UpdateTable() {
   if (document.getElementById('extended') !== null) return;
 
   const scriptElements = document.documentElement.getElementsByTagName('script');
-  console.log(scriptElements)
   const regex_SORT = new RegExp('^SORT[0-9]');
   let headAdded = false;
   for (let scriptElement of scriptElements) {
@@ -112,41 +108,3 @@ function UpdateTable() {
 
   document.getElementsByTagName('head')[0].setAttribute('id', 'extended');
 }
-
-/*
-    const html_idx = [[1, 9], [4, 2]];
-    const start_index = [2, 2];
-    const html0 = document.getElementsByTagName('center')[0].getElementsByClassName('c')[html_idx[0][gametype]].getElementsByClassName('tbg')[0];
-    if (gametype == 0) {
-      html0.getElementsByTagName('tbody')[0].insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f3">※最新でない恐れあり</div></td></tr>');
-      html0.getElementsByTagName('tbody')[0].insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td></td><td style="text-align:right;"><div class="f1">S許容ニア数</div></td></tr>');
-    } else {
-      html0.getElementsByTagName('tbody')[0].insertAdjacentHTML(
-        'afterbegin',
-        '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
-        + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
-        + '<td style = "text-align:right;"><div class="f2">99AJ<br>(J)</div></td>'
-      );
-    }
-    const html = html0.getElementsByTagName('tr');
-    for (let i = start_index[gametype]; i < html.length; i++) {
-      const td = html[i].getElementsByTagName('td');
-      if (td.length <= 1) continue;
-      const script_data = td[0].getElementsByTagName('script');
-      const src = script_data[0].getAttribute('src');
-      const ID = script_data[1].innerHTML.slice(4, 4 + 6);
-      const chain = parseInt(GetChain(ID, src));
-      if (isNaN(chain)) continue;
-      if (gametype == 0) {
-        td[html_idx[1][gametype]].insertAdjacentHTML('afterend', '<td style="text-align:right;"><div class="f1">' + CalcTolerance(chain, gametype) + '</div></td>');
-      } else {
-        const result = CalcTolerance(chain, gametype);
-        td[html_idx[1][gametype]].insertAdjacentHTML(
-          'afterend',
-          '<td style="text-align:right;"><div class="f2">' + result[0] + '</div></td>'
-          + '<td style="text-align:right;"><div class="f2">' + result[1] + '</div></td>'
-          + '<td style="text-align:right;"><div class="f2">' + result[2] + '</div></td>'
-        );
-      }
-    }
-    document.getElementsByTagName('head')[0].setAttribute('id', 'extended');  */
