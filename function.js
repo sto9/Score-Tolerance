@@ -60,14 +60,14 @@ function UpdateRowHead(tbodyElement, gametype) {
       + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
       + '<td style = "text-align:right;"><div class="f2">99AJ<br>(J)</div></td>'
     );
-  } else if (gametype === 2){
+  } else if (gametype === 2) {
     tbodyElement.insertAdjacentHTML(
       'afterbegin',
-      '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
-      + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
-      + '<td style = "text-align:right;"><div class="f2">1009k<br>(J)</div></td>'
+      '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br></div></td>'
+      + '<td style = "text-align:right;"><div class="f2">SSS+<br></div></td>'
+      + '<td style = "text-align:right;"><div class="f2">1009k<br></div></td>'
     );
-    tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td style="text-align:right;"><div class="f1">許容BREAK数(FBND)</div></td></tr>');
+    tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td style="text-align:right;"><div class="f1">許容BREAK数(FB&ND)</div></td></tr>');
   }
 }
 
@@ -77,6 +77,14 @@ function UpdateRow(sortElement, gametype) {
   const ID = sortElement.innerHTML.slice(4, 4 + 6);
   const chain = parseInt(GetChain(ID, src));
   const trElement = sortElement.parentElement.parentElement;
+
+  // 余計な<td>が入っている場合があるので削除する
+  for (let td of trElement.children) {
+    console.log(td);
+    if (td.innerText === "") {
+      trElement.removeChild(td);
+    }
+  }
 
   if (isNaN(chain)) return;
   if (gametype === 0) {
