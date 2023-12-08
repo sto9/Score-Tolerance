@@ -1,14 +1,20 @@
-(function () {
+const scripts =
+  ['https://code.jquery.com/jquery-1.12.4.min.js',
+    'https://sto9.github.io/Score-Tolerance/function.js'];
+
+let si = 0;
+
+(function appendScript() {
   'use strict';
-  let jquery = document.createElement('script');
-  jquery.setAttribute('src', 'https://code.jquery.com/jquery-1.12.4.min.js');
-  document.head.appendChild(jquery);
 
   let script = document.createElement('script');
-  script.setAttribute('src', 'https://sto9.github.io/Score-Tolerance/function.js');
-  script.setAttribute('type', 'text/javascript');
-  script.addEventListener('load', function () {
-    UpdateTable();
-  });
+  script.setAttribute('src', scripts[si]);
   document.head.appendChild(script);
+  if (si === 0) {
+    script.onload = appendScript;
+  } else if (si === 1) {
+    script.addEventListener('load', function () {
+      UpdateTable();
+    });
+  }
 })();
