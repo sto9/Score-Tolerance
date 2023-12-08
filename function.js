@@ -65,9 +65,9 @@ function UpdateRowHead(tbodyElement, gametype) {
       'afterbegin',
       '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br></div></td>'
       + '<td style = "text-align:right;"><div class="f2">SSS+<br></div></td>'
-      + '<td colspan="3" style = "text-align:right;"><div class="f2">1009k<br></div></td>'
+      + '<td style = "text-align:right;"><div class="f2">1009k<br></div></td>'
     );
-    tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td style="text-align:right;"><div class="f1">許容BREAK数(FB&ND)</div></td></tr>');
+    tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td colspan="3" style="text-align:right;"><div class="f1">許容BREAK数(FB&ND)</div></td></tr>');
   }
 }
 
