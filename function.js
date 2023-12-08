@@ -80,7 +80,6 @@ function UpdateRow(sortElement, gametype) {
 
   // 余計な<td>が入っている場合があるので削除する
   for (let td of trElement.children) {
-    console.log(td);
     if (td.innerHTML === "") {
       trElement.removeChild(td);
     }
