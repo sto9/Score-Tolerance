@@ -13,26 +13,14 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
 // ==/UserScript==
 
-const scripts =
-  ['https://code.jquery.com/jquery-1.12.4.min.js',
-    'https://sto9.github.io/Score-Tolerance/function.js'];
-
-let si = 0;
-
-function appendScript() {
-  if (si >= scripts.length) return;
-  let script = document.createElement('script');
-  script.setAttribute('src', scripts[si]);
-  document.head.appendChild(script);
-  script.onload = appendScript;
-  if (si === 1) {
+(function () {
+  'use strict';
+  window.onload = function () {
+    let script = document.createElement('script');
+    script.setAttribute('src', 'https://sto9.github.io/Score-Tolerance/function.js');
+    document.head.appendChild(script);
     script.addEventListener('load', function () {
       UpdateTable();
     });
-  }
-  si++;
-};
-
-(function () {
-  window.onload = appendScript;
+  };
 })();
