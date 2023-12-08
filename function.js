@@ -39,6 +39,13 @@ function CalcTolerance(chain, gametype) {
     t = Math.floor(chain / 100);
     res.push(t);
     return res;
+  } else if (gametype === 2) { // ONGEKI
+    let res = [];
+    for (let loss of [10000, 2500, 1000]) {
+      let t = Math.floor(10 * chain * loss / 950000);
+      res.push(t);
+    }
+    return res;
   }
 }
 
@@ -53,6 +60,14 @@ function UpdateRowHead(tbodyElement, gametype) {
       + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
       + '<td style = "text-align:right;"><div class="f2">99AJ<br>(J)</div></td>'
     );
+  } else if (gametype === 2){
+    tbodyElement.insertAdjacentHTML(
+      'afterbegin',
+      '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
+      + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
+      + '<td style = "text-align:right;"><div class="f2">1009k<br>(J)</div></td>'
+    );
+    tbodyElement.insertAdjacentHTML('afterbegin', '<tr><td></td><td></td><td style="text-align:right;"><div class="f1">許容BREAK数(FBND)</div></td></tr>');
   }
 }
 
@@ -66,7 +81,7 @@ function UpdateRow(sortElement, gametype) {
   if (isNaN(chain)) return;
   if (gametype === 0) {
     trElement.insertAdjacentHTML('beforeend', '<td style="text-align:right;"><div class="f1">' + CalcTolerance(chain, gametype) + '</div></td>');
-  } else if (gametype === 1) {
+  } else if (gametype === 1 || gametype === 2) {
     const result = CalcTolerance(chain, gametype);
     trElement.insertAdjacentHTML(
       'beforeend',
