@@ -12,6 +12,7 @@ let si = 0;
   document.head.appendChild(script);
   if (si === 0) {
     script.onload = appendScript;
+    si++;
   } else if (si === 1) {
     script.addEventListener('load', function () {
       UpdateTable();
