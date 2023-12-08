@@ -7,16 +7,15 @@ let si = 0;
 (function appendScript() {
   'use strict';
 
+  if (si >= scripts.length) return;
   let script = document.createElement('script');
   script.setAttribute('src', scripts[si]);
   document.head.appendChild(script);
-  if (si < scripts.length) {
-    script.onload = appendScript;
-    if (si === 1) {
-      script.addEventListener('load', function () {
-        UpdateTable();
-      });
-    }
-    si++;
+  script.onload = appendScript;
+  if (si === 1) {
+    script.addEventListener('load', function () {
+      UpdateTable();
+    });
   }
+  si++;
 })();
