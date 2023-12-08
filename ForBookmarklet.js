@@ -10,12 +10,13 @@ let si = 0;
   let script = document.createElement('script');
   script.setAttribute('src', scripts[si]);
   document.head.appendChild(script);
-  if (si === 0) {
+  if (si < scripts.length) {
     script.onload = appendScript;
+    if (si === 1) {
+      script.addEventListener('load', function () {
+        UpdateTable();
+      });
+    }
     si++;
-  } else if (si === 1) {
-    script.addEventListener('load', function () {
-      UpdateTable();
-    });
   }
 })();
