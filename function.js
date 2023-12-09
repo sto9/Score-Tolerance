@@ -103,7 +103,6 @@ function UpdateTable() {
   if (document.getElementById('extended') !== null) return;
 
   const url = location.href;
-  console.log(url);
   let gametype = -1;
   const regex_sdvx = new RegExp('^https://(www.)?sdvx.in/sort');
   const regex_chuni = new RegExp('^https://(www.)?sdvx.in/chunithm');
