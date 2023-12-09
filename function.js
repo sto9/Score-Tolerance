@@ -105,16 +105,18 @@ function UpdateTable() {
   const url = location.href;
   console.log(url);
   let gametype = -1;
-  const regex_sdvx = new RegExp('^https://sdvx.in/sort');
-  const regex_chuni = new RegExp('^https://sdvx.in/chunithm');
-  const regex_ongeki = new RegExp('^https://sdvx.in/ongeki');
-  const regex_prsk = new RegExp('^https://sdvx.in/prsk');
-  const regex_ymst = new RegExp('^https://sdvx.in/ymst');
+  const regex_sdvx = new RegExp('^https://(www.)?sdvx.in/sort');
+  const regex_chuni = new RegExp('^https://(www.)?sdvx.in/chunithm');
+  const regex_ongeki = new RegExp('^https://(www.)?sdvx.in/ongeki');
+  const regex_prsk = new RegExp('^https://(www.)?sdvx.in/prsk');
+  const regex_ymst = new RegExp('^https://(www.)?sdvx.in/ymst');
   if (regex_sdvx.test(url)) gametype = 0;
   else if (regex_chuni.test(url)) gametype = 1;
   else if (regex_ongeki.test(url)) gametype = 2;
   else if (regex_prsk.test(url)) gametype = 3;
   else if (regex_ymst.test(url)) gametype = 4;
+
+  if (gametype === -1) return;
 
   const scriptElements = document.documentElement.getElementsByTagName('script');
   const regex_SORT = new RegExp('^SORT[0-9]');
