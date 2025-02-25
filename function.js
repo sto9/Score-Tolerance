@@ -56,7 +56,7 @@ function UpdateRowHead(tbodyElement, gametype) {
   } else if (gametype === 1) {
     tbodyElement.insertAdjacentHTML(
       'afterbegin',
-      '<tr><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
+      '<tr id="tolerance-header"><td></td><td><td style="text-align:right;"><div class="f2">SSS<br>(A)</div></td>'
       + '<td style = "text-align:right;"><div class="f2">SSS+<br>(A)</div></td>'
       + '<td style = "text-align:right;"><div class="f2">99AJ<br>(J)</div></td>'
     );
